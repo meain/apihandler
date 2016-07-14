@@ -9,9 +9,7 @@ class apiwolfram(apihandler):
 
     def call(self, data, mode):
         '''
-        Here data is a string 'the wolfram querry'
+        Data : string - 'wolfram query'
         '''
         data = self.client.query(data)
         return data
-
-
