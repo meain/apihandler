@@ -25,7 +25,12 @@ class apihandler:
         Write cache to db
         Pickling all data cuz ****
         '''
-        self.api_cache.store({'data': pickle.dumps(data), 'mode': pickle.dumps(mode), 'result': pickle.dumps(result), 'time': pickle.dumps(datetime.datetime.now())})
+        class_name = self.__class__.__name__
+        pickled_data = pickle.dumps(data)
+        pickled_mode = pickle.dumps(mode)
+        pickled_result = pickle.dumps(result)
+        pickled_time = pickle.dumps(datetime.datetime.now())
+        self.api_cache.store({'data': pickled_data, 'mode': pickled_mode, 'result': pickled_result, 'class_name': class_name, 'time': pickled_time})
 
     def read_cache(self, data, mode):
         '''
