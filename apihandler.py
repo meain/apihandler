@@ -25,7 +25,9 @@ class apihandler:
         Write cache to db
         Pickling all data cuz ****
         '''
+        # Get class name
         class_name = self.__class__.__name__
+
         pickled_data = pickle.dumps(data)
         pickled_mode = pickle.dumps(mode)
         pickled_result = pickle.dumps(result)
@@ -37,7 +39,10 @@ class apihandler:
         Read data, blah blah...
         You know how it works...
         '''
-        cache_data = self.api_cache.filter(lambda api: api['data']==pickle.dumps(data) and api['mode']==pickle.dumps(mode))
+        # Get class name
+        class_name = self.__class__.__name__
+
+        cache_data = self.api_cache.filter(lambda api: api['data']==pickle.dumps(data) and api['mode']==pickle.dumps(mode) and api['class_name']==class_name)
         # cached_data[-1] jsut because it might have old data, this will ensure it takes the last one
         if not cache_data or cache_data[-1]['result'] is None:
             return None
