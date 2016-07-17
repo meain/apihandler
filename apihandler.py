@@ -56,8 +56,9 @@ class apihandler:
         # Get class name
         class_name = self.__class__.__name__
 
-        cache_data = self.api_cache.filter(lambda api: api['data']==pickle.dumps(data) and api['mode']==pickle.dumps(mode) and api['class_name']==class_name)
-        if len(cache_data) > 0 :
+        cache_data = self.api_cache.filter(lambda api: api['data'] == pickle.dumps(data) and \
+                api['mode'] == pickle.dumps(mode) and api['class_name'] == class_name)
+        if len(cache_data) > 0:
             cache_result = cache_data[-1]
             # Check validity of cache
             validity = self.cache_validity
@@ -65,19 +66,19 @@ class apihandler:
             current_time = datetime.datetime.now().replace(microsecond=0)
             time_difference = (current_time - save_time).total_seconds()
             # Get validity
-            if len(validity) > 0 :
+            if len(validity) > 0:
                 if validity[-1] == 's':
                     valid_seconds = int(validity[:-1])
                 elif validity[-1] == 'm':
-                    valid_seconds = int(validity[:-1])*60
+                    valid_seconds = int(validity[:-1]) * 60
                 elif validity[-1] == 'h':
-                    valid_seconds = int(validity[:-1])*60*60
+                    valid_seconds = int(validity[:-1]) * 60 * 60
                 elif validity[-1] == 'd':
-                    valid_seconds = int(validity[:-1])*24*60*60
+                    valid_seconds = int(validity[:-1]) * 24 * 60 * 60
                 elif validity[-1] == 'm':
-                    valid_seconds = int(validity[:-1])*30*24*60*60
+                    valid_seconds = int(validity[:-1]) * 30 * 24 * 60 * 60
                 elif validity[-1] == 'y':
-                    valid_seconds = int(validity[:-1])*12*30*24*60*60
+                    valid_seconds = int(validity[:-1]) * 12 * 30 * 24 * 60 * 60
             else:
                 # Infinite validity
                 valid_seconds = 0
