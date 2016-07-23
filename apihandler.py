@@ -24,10 +24,10 @@ class apihandler:
     def cache_validity(self):
         '''
         Default = '' = unlimited
-        You could use s(second) m(minute) h(hour) d(day) m(month) y(year)
-        *only one at a time*
+        You could use h(hour) d(day) m(month) y(year)
+        *only one at a time* *you can use decimals*
         eg :
-            5s
+            0.5h
             30d
             10m
             1y
@@ -67,11 +67,7 @@ class apihandler:
             time_difference = (current_time - save_time).total_seconds()
             # Get validity
             if len(validity) > 0:
-                if validity[-1] == 's':
-                    valid_seconds = int(validity[:-1])
-                elif validity[-1] == 'm':
-                    valid_seconds = int(validity[:-1]) * 60
-                elif validity[-1] == 'h':
+                if validity[-1] == 'h':
                     valid_seconds = int(validity[:-1]) * 60 * 60
                 elif validity[-1] == 'd':
                     valid_seconds = int(validity[:-1]) * 24 * 60 * 60
