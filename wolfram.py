@@ -1,4 +1,4 @@
-from apihandler import apihandler
+from apihandler.apihandler import apihandler
 import wolframalpha
 from apikeys import *
 
@@ -9,7 +9,7 @@ class apiwolfram(apihandler):
 
     @property
     def cache_validity(self):
-        return '5s'
+        return '1h'
 
     def call(self, data, mode):
         '''

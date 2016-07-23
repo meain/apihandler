@@ -16,7 +16,7 @@ class apihandler:
     '''
     Initialize cache db
     '''
-    db = UnQLite('apihandlerdata')
+    db = UnQLite('../apihandlerdata')
     api_cache = db.collection('apicache')
     api_cache.create()
 
